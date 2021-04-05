@@ -1,0 +1,9 @@
+ipconfig /all /displaydns /flushdns
+netstat -an
+ping - envia pacotes ICMP p/ o ip especificado
+tracert
+nslookup
+arp -a
+
+copy nul nome.txt
+del nome.txt

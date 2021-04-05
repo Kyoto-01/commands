@@ -1,0 +1,22 @@
+git --version
+git config --global user.name "nome do usuário aqui"
+git config --global user.email meu_email000@gmail.com
+git config --list
+
+git init
+git status
+git clone
+
+git add <file_name>
+git restore <file_name>
+
+git commit -m "descrição"
+git restore --staged <file_name>
+git log
+
+git branch -M <branch_name>
+git remote add origin <url>
+git remote -v
+git push origin <branch_name>
+
+git rm -r --cached <file_name>

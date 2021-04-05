@@ -1,0 +1,57 @@
+*** ATRIBUIR HOSTNAME DE UM SWITCH ***
+
+switch(config)# hostname [hostname]
+
+
+*** ATRUBUIR SENHA PARA MODO EXEC DE USUÁRIO SWITCH ***
+
+switch(config)# line console 0 |ou| line console vty 0 15
+switch(config-line)# password [password]
+switch(config-line)# login
+
+
+*** ATRIBUIR SENHA P/ MODO EXEC PRIVILEGIADO ***
+
+switch(config)# enable password [password] (sem criptografia)
+ou
+switch(config)# enable secret [password] (com criptografia)
+
+
+*** ver configurações globais ***
+
+switch# show running-config
+
+
+*** CRIPTOGRAFAR SENHAS NO ARQUIVO DE SENHAS (NÃO QUANDO SÃO ENVIADAS) ***
+
+switch(config)# service password-encrypt
+
+
+*** ESCREVER MENSSAGEM NA TELA AO ACESSAR SWITCH ***
+
+switch(config)# banner motd #[menssagem]#
+
+
+*** SALVAR CONFIGURAÇÕES TEMPORÁRIAS DO RUNNING-CONFIG (RAM) COMO CONF. DE INICIALIZAÇÃO NO STARTUP-CONFIG (NVRAM)***
+
+switch# copy running-config startup-config |ou| wr
+
+
+*** REINICIAR DISPOSITIVO (ISSO TAMBÉM APAGA O RUNNING-CONFIG) ***
+
+switch# reload
+
+
+*** APAGAR STARTUP-CONFIG ***
+
+switch# erase startup-config
+
+
+*** VER CONFIGURAÇÕES DE IP DO SWITCH ***
+
+switch# show ip interface
+
+
+*** VER IPs DAS INTERFACES ***
+
+switch# show ip interface brief

@@ -1,0 +1,152 @@
+==================== COMANDOS GERAIS =========================================================
+
+halt/poweroff/shutdown - desliga o computador
+reboot - reinicia o computador
+init 6 - reinicia o Linux
+
+man - exibe função de um comando
+
+===================== GERENCIAMENTO DE USUÁRIOS ===================================================
+
+su - [usuário] - abre um prompt para digitar senha para logar como o usuário especificado, sem nenhum usuário especificado, loga como root.
+sudo - Faz algo com privilégios de root e depois retorna ao usuário comum. (grupos de usuários que podem fazer sudo estão especificados no arquivo /etc/sudoers)
+
+passwd - modifica a senha do usuário atual. O superusuário pode modificar a senha de qualquer usuário, nesse caso basta especificar o usuário.
+id - Mostra o id do usuário e também do usuário em seus respectivos grupos.
+
+adduser [usuário] [grupo (opcional)] - Adiciona um usuário.
+gpasswd -a [usuário] [grupo] - adiciona um usuário a um grupo.
+gpasswd -d [usuário] [grupo] - remove um usuário de um grupo.
+groups - mostra os grupos de usuários que o usuário atual pertence (o arquivo /etc/group mostra uma lista dos grupos existentes e seus respectivos usuários).
+
+exit - sai do usuário atual e volta para o anterior.
+logout - Sai da sessão do usuário atual.
+
+===================== GERENCIAMENTO DE PACOTES =========================================================
+
+apt install - instala um pacote
+apt remove - remove um pacote
+apt purge - remove um pacote junto com todas as suas configurações. Remoção com força. 
+apt list - Lista os pacotes disponíveis no repositório local de pacotes.
+apt list --installed - lista pacotes instalados que estão disponíveis no repositório local.
+apt search - pesquisa pelo pacote especidicado.
+apt show - mostra informações de um pacote (instalado ou não).
+apt update - Atualiza o repositório local de pacotes com as informações atualizadas disponíveis no repositório remoto.
+apt ugrade - atualiza os pacotes instalados. Para isso o apt utiliza as informações atualizadas disponíveis no repositório local.
+
+wget - Baixa arquivos da internet, inclusive .deb.
+
+dpkg -i - Instala o .deb especificado.
+dpkg -r - Remove pacotes.
+dpkg -l - Lista os pacotes instalados e suas informações não detalhadas.
+dpkg -L - Mostra a localização dos arquivos de um pacote especificado.
+dpkg -s - Mostra informações detalhadas de um pacote instalado.
+dpkg -S - Mostra a que pacote pertence um arquivo especificado.
+dpkg -c - Mostra o conteúdo de um .deb.
+dpkg -P - Remoção forte. Exclui um pacote junto com todos os seus srquivos de configuração.
+dpkg -iR - Instala recursivamente todos os .deb contidos em um diretório especificado.
+
+snap install - Instala um pacote snap de um repositório de pacotes snap.
+snap remove - Remove um pacote snap.
+snap list - Lista todos os pacotes snap instalados.
+snap find - Pesquisa pacotes snap em um repositório snap.
+snap info - Mostra informações detalhadas do pacote snap específico.
+
+===================== NAVEGAÇÃO PELO FHS ========================================================
+
+pwd - retorna a localização atual de diretórios do usuário
+who - exibe nome de usuário logado e data de login
+whoami - exibe nome de usuário
+
+cd - volta p/ diretorio inicial /home
+cd ../ ou CD ..- volta um diretório
+cd /[diretorio] - caminho absoluto p/ o diretorio
+cd [diretorio] ou cd ./[diretorio] - caminho relativo do diretorio
+
+tree - exibe árvore de diretórios e arquivos do sistema
+tree -L [n] - expande a árvore de arquivos e diretorios em n níveis
+
+ls - lista arquivos e diretórios de uma pasta
+ls -a - não ignora arquivos e diretórios ocultos (aqueles iniciados com um ponto [.])
+ls -F - lista arquivos e diretorios com barra ao final dos diretorios p/ identificar que são diretorios
+ls -l - informações detalhadas sobre arquivos e diretórios de uma pasta
+ls -la - faz ls -l junto com ls -a
+ls -R - lista os diretórios recursivamente, ou seja, junto com tudo o que tem dentro dele
+
+===================== MANIPULAÇÃO DE DIRETÓRIOS =================================================
+
+mkdir - cria diretórios
+rmdir - remove diretórios vazios
+rm -r - remove diretórios não vazios
+rm -rf - força remoção de diretórios não vazios
+
+cp [n] [m] - cria um arquivo ou diretório chamado m que é uma cópia de n
+mv - mover ou até renomear arquivos e diretórios
+
+===================== REDIRECIONADORES ==========================================================
+
+< - stdin: já tenho o arquivo. redireciona conteúdo de arquivo para comando
+<< - stdin: vou escrever o conteúdo da entrada dinâmicamente. Redireciona o que o user digita para o comando.
+<<< - stdin: vou escrever uma linha (string) de entrada. redireciona string atribuída para o comando.
+
+> - stdout: redireciona saída de comando para arquivo. Este arquivo será criado ou apagado e reescrito se já existir.
+>> - stdout: redireciona saída de comando para arquivo. O texto apenas será adicionado ao final do arquivo.
+
+2> - stderr: redireciona saída de erro de comando para arquivo. Este arquivo será criado ou apagado e reescrito se já existir.
+2>> - stderr: redireciona saída de erro de comando para arquivo. O texto apenas será adicionado ao final do arquivo.
+
+&> - redireciona saída e saída de erro de comando para arquivo. Este arquivo será criado ou apagado e reescrito se já existir.
+&>> - redireciona saída e saída de erro de comando para arquivo. O texto apenas será adicionado ao final do arquivo.
+
+| - pipe: redireciona saída de um comando para outro comando.
+
+====================== APLICATIVOS =======================================================================
+
+bc - calculadora
+
+====================== MANIPULAÇÃO E EXIBIÇÃO DE ENTRADAS E ARQUIVOS ============================================================
+
+touch - cria arquivos
+file - retorna informações sobre um arquivo
+nano - editor de texto p/ escrever em arquivo
+vi ou vim - editor de texto mais avançado do que nano
+
+rm - remove arquivos
+rm -f - força remoção de arquivos
+
+cat - exibe o conteúdo de um arquivo
+cat > abc - cria um arquivo e permite que o usuário escreva nele até que pessione CTRL + Z
+tac - exibe o conteúdo de um arquivo com suas linhas ao contrário
+
+more - exibe conteúde de arquivo de acordo com que o user clica enter. pressione q para sair antes do fim do arquivo.
+less - quase o mesmo que more mas permite navegação por meio das setas de navegação.
+
+wc - exibe quantidade de linhas, palavras e caracteres em um texto
+wc -l - exibe quantidade de linhas em um texto
+wc -w - exibe quantidade de palavras em um texto
+wc -c - exibe quantidade de caracteres em um texto
+
+sort - exibe texto com suas linha ordenadas (alfabetica ou numéricamente)
+uniq - exibe algum texto sem as linhas que contém conteúdo repetido
+uniq -c - faz uniq mas mostra a quantidade de repetições ao lado da cada linha.
+head -n - permite a exibição das n primeiras linhas de um texto.
+tail -n - permite a exibição das n últimas linhas de um texto.
+grep - exibe apenas as linhas do texto que correspondem á expressão regular ou string especificada
+
+============================ REDE ==============================================================================================
+
+ifconfig ou ip addr- informações de ip
+
+============================ CONFIGURAÇÃO DO TERMINAL ==========================================================================
+
+setterm -foreground [cor] - atribui uma cor para a fonte do terminal
+setterm -background [cor] - atribui uma cor para o fundo da fonte do terminal
+setterm -foreground [cor] -background [cor] -store - atribui cor para a fonte e para o fundo da fonte. Além disso, grava as configurações durante a execução do terminal.
+
+============================= ATALHOS ==========================================================================================
+
+CTRL + C - cancela a execução de um comando
+CTRL + D - indica fim de um arquivo
+CTRL + L - rola o terminal para baixo, "apagando-o"
+CTRL + Z - para execução de programa
+q - sai do more e do less
