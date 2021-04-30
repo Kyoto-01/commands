@@ -1,20 +1,26 @@
 ==================== COMANDOS GERAIS =========================================================
 
-halt/poweroff/shutdown - desliga o computador
-reboot - reinicia o computador
-init 6 - reinicia o Linux
+shutdown -r now |ou| init 6 - reinicia o Linux
+shutdown now |ou| init 0 - desliga o Linux
 
 man - exibe função de um comando
 
 ===================== GERENCIAMENTO DE USUÁRIOS ===================================================
 
-su - [usuário] - abre um prompt para digitar senha para logar como o usuário especificado, sem nenhum usuário especificado, loga como root.
+whoami - Informa o nome do usuário atual.
+who - informa o horário de log e outras informações do usuário atual.
+localhost - Informa o nome da máquina.
+
 sudo - Faz algo com privilégios de root e depois retorna ao usuário comum. (grupos de usuários que podem fazer sudo estão especificados no arquivo /etc/sudoers)
+sudo -u - faz algo como o usuário específicado.
+
+su - [usuário] - abre um prompt para digitar senha para logar como o usuário especificado, sem nenhum usuário especificado, loga como root.
+su -c "comando"- alternativa ao sudo, porém mais seguro, pois a senha que ele pede é de root e não do usuário atual.
 
 passwd - modifica a senha do usuário atual. O superusuário pode modificar a senha de qualquer usuário, nesse caso basta especificar o usuário.
 id - Mostra o id do usuário e também do usuário em seus respectivos grupos.
 
-adduser [usuário] [grupo (opcional)] - Adiciona um usuário.
+adduser [usuário] [grupo (opcional)] - Adiciona um usuário e também pode fazer o mesmo que gpasswd.
 gpasswd -a [usuário] [grupo] - adiciona um usuário a um grupo.
 gpasswd -d [usuário] [grupo] - remove um usuário de um grupo.
 groups - mostra os grupos de usuários que o usuário atual pertence (o arquivo /etc/group mostra uma lista dos grupos existentes e seus respectivos usuários).
@@ -72,6 +78,8 @@ ls -F - lista arquivos e diretorios com barra ao final dos diretorios p/ identif
 ls -l - informações detalhadas sobre arquivos e diretórios de uma pasta
 ls -la - faz ls -l junto com ls -a
 ls -R - lista os diretórios recursivamente, ou seja, junto com tudo o que tem dentro dele
+
+lsblk - Mostra os discos (sda)
 
 ===================== MANIPULAÇÃO DE DIRETÓRIOS =================================================
 
