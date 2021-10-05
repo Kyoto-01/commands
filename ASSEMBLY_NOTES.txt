@@ -1,0 +1,46 @@
+***************************************
+Assembly x86 Intel
+***************************************
+
+movl $5, %eax ;sintaxe AT&T
+mov eax, 5 ;sintaxe INTEL
+
+
+***************************************
+seções de um programa Assembly
+***************************************
+
+section .data		;constantes
+section .bss		;variaveis
+section .text		;código
+	global _start	;label onde o programa começa
+_start:			;label
+
+
+***************************************
+Tipos de declarações Assembly
+***************************************
+$ instruções executáveis [ gera uma instrução binária de máquina ]
+$ assembler directives OU pseudo-ops [ Não executável, apenas comunicação com o assembler ]
+$ macros [ mecanismo de substituição de texto ]
+
+
+***************************************
+Sintaxe das declarações Assembly
+***************************************
+
+[label] mnemônico [operandos] [;comentário]
+
+$ exemplos:
+	INC COUNT	; Incrementa a variável de memória COUNT
+
+	MOV TOTAL, 48	; Move o valor 48 p/ a variável de memória TOTAL
+
+	ADD AH, BH	; adiciona o conteúdo do registrador BH em AH
+
+	AND MASK1, 128	; faz um AND lágico entre a variável de memória
+			; MASK1 e 128 e armazena resultado em MASK1
+
+	ADD MARKS, 10	; Adiciona 10 na variável MARKS
+
+	MOV AL, 10	; Move o valor 10 para o registrador AL
