@@ -44,3 +44,120 @@ $ exemplos:
 	ADD MARKS, 10	; Adiciona 10 na variável MARKS
 
 	MOV AL, 10	; Move o valor 10 para o registrador AL
+
+
+
+***************************************
+Segmentos da memória
+***************************************
+
+$ Segmento de dados [ Data segment ] --> formado pelas seções .data ( tamanho fixo e não pode ser expandida depois da declaração dos dados ) e .bss ( tamanho fixo zero-filled e pode ser preenchida em tempo de execução )
+
+$ Segmento de instruções [ Code segment ] -> área fixa formada pela seção .text que armazena as instruções.
+
+$ Pilha [ Stack ] -> área fixa que armazena os dados passados para as funções e procedimentos. Armazena também o ponto de retorno da função ou procedimento.
+
+
+
+***************************************
+Registradores da arquitetura IA-32
+***************************************
+
+$ "10 de 32 bits" e "6 de 16 bits"
+
+$ categorias
+	# registradores gerais
+		* registradores de dados
+
+			    31			16 15		8 7		0		
+			    -----------------------------------------------------
+			EAX |			  |	 AH	 |	AL	| AX  Acumulador 
+			    -----------------------------------------------------
+			EBX |			  |	 BH	 |	BL	| BX  base
+			    -----------------------------------------------------
+			ECX |			  |  	 CH	 |	CL	| CX  contador
+			    ----------------------------------------------------- 
+			EDX |			  |	 DH	 |	DL	| DX  dado
+			    -----------------------------------------------------
+				
+			% Accumulator
+				- EAX ( 32-bit )
+				- AX ( 16-bit )
+				- AH e AL ( 8-bit )
+				
+				Usado p/ I/O e p/ a maioria das instruções aritméticas. 
+				Ex.: Na operação de multiplicação um oerando é salvo em 
+       				EAX, AX ou AL.
+
+			% Base	
+				- EBX ( 32-bit )
+				- BX ( 16-bit )
+				- BH e BL ( 8-bit )
+
+				Usado em endereçamento indexado.
+
+			% Count
+				- ECX ( 32-bit )
+				- CX ( 16-bit )
+				- CH e CL ( 8-bit )
+				
+				Usado em operações iterativas como contador de loop.
+
+			% Data
+				- EDX ( 32-bit )
+				- DX ( 16-bit )
+				- DH e DL ( 8-bit )
+			
+				Também utilizado p/ operações e I/O. Ex.: Usado com o
+				acumulador p/ operações de multiplicação e divisão.
+
+		* registradores de ponteiro
+		
+			   31		16 15		0
+			   ------------------------------
+			ESP|              |      SP     | ponteiro da pilha
+			   ------------------------------
+			EBP|              |      BP     | ponteiro da base
+			   ------------------------------
+			
+			- EIP, ESP e EBP ( 32-bit )
+			- IP ( Ponteiro de instrução ) , SP e BP ( 16-bit )		
+	
+		* registradores de índice
+
+			   31		16 15		0
+			   ------------------------------
+			ESI|              |      SI     | Source Index
+			   ------------------------------
+			EDI|		  |	 DI	| Destination Index
+			   ------------------------------
+
+			- ESI, EDI, SI e DI --> Usados p/ endereçamento indexado e de vez em
+			  quando p/ operações de adição e subtração.
+
+			- SI --> Indice fonte em operações com string
+			- DI --> Indice de destino em operações com string
+
+	# registradores de controle
+		* FLAGS [ 16 bits ]
+			- Grava o estado do processador após a execução de uma 
+			operação.
+		
+			- Bits do FLAGS:
+				11 - Overflow Flag (OF) [ 1 indica se houve overflow no bit mais significativo depois de uma operação aritmética. ]
+				10 - Direction Flag (DF) [ Indica a direção p/ mover ou comparar uma string. 1 esquerda-direita, 0 direita-esquerda. ]
+				9 - Interrupt Flag (IF) [ Indica se o processador permite interrupção externa, como pelo teclado. 0 desabilita, 1 habilita. ]
+				8 - Trap Flag (TF) [ 1 faz o processador operar no modo single-step, onde uma instrução é executada por vez, igual nos debugs. ]
+				7 - Sign Flag (SF) [ mostra o sinal do resultado de uma operação aritmética. 0 positivo, 1 negativo. ]
+				6 - Zero Flag (ZF) [ Indica se resultado de operação aritmética foi 0. 1 se sim, 0 se não. ]
+				4 - Auxiliary Carry Flag (AF) [ 1 se operação aritmética de 1 byte causar transporte de entrada no bit 4. ]
+				2 - Parity Flag (PF) [ 0 de qtd. de bits 1 é ímpar, 1 se é par ]
+				0 - Carry Flag (CF) - [ contém o transporte de saída 0 ou 1 do bit mais significativo depois de uma operação aritmética. Também serve p/ gravar o conteúdo do último bit de uma operação de "shift" ou "rotate". ]	
+	# registradores de segmento
+
+	* Code Segment (CS) [ 16 bits ]
+		- Armazena endereço inícial do segmento de código do programa.
+	* Data Segment (DS) [ 16 bits ]
+		- Armazena endereço inícial do segmento de dados do programa.
+	* Stack Segment (SS) [ 16 bits ]
+		- Armazena endereço inícial da stack do programa.
