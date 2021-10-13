@@ -20,3 +20,9 @@ git remote -v
 git push origin <branch_name>
 
 git rm -r --cached <file_name>
+
+git clone
+git push
+git pull
+git fetch
+git merge
