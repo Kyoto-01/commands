@@ -8,4 +8,5 @@ arp -a
 copy nul nome.txt
 del nome.txt
 
-route add 200.200.200.42 mask 255.255.255.248 192.168.1.6 -p (cria uma rota persistente (com um gateway padrão adicional))
+route add 200.200.200.40 mask 255.255.255.248 192.168.1.6
+route add 200.200.200.40 mask 255.255.255.248 192.168.1.6 -p (rota persistente)
